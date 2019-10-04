@@ -1,0 +1,27 @@
+---
+title: "proj2_1"
+author: "nuanjun zhao"
+date: "10/2/2019"
+output: html_document
+---
+
+```{r}
+clean <- read.csv("../data/clean.csv", stringsAsFactors=FALSE)
+category = head(sort(table(clean$CUISINE.DESCRIPTION),decreasing = T),11)
+name_cuisine = names(category)
+all<-read.csv("../data/Restaurant.csv",stringsAsFactors=FALSE)
+all<-all[,-c(1,10,13,16,17,18,21,22,23,24,25,26)]
+top11 = all[all$CUISINE.DESCRIPTION %in% name_cuisine,]
+#all<- subset(top11,top11$GRADE != "")
+#all<-subset(all,all$GRADE != "G")
+#all<- subset(all,all$GRADE != "N")
+#all<- subset(all,all$GRADE != "Z")
+all<-subset(top11,top11$SCORE!=-1)
+all<-subset(all,all$BORO!="0")
+all$CUISINE.DESCRIPTION[all$CUISINE.DESCRIPTION=="Café/Coffee/Tea"]<-"Café"
+all$CUISINE.DESCRIPTION[all$CUISINE.DESCRIPTION=="Latin (Cuban, Dominican, Puerto Rican, South & Central American)"]<-"Latin"
+data<-all
+uniquedata<-data[!duplicated(data[c(1,3,4,8,11)]),]
+
+save(uniquedata, file = '../output/uniquedata.RData')
+```
