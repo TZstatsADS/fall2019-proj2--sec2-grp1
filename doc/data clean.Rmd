@@ -1,0 +1,20 @@
+---
+title: "data clean"
+output: html_document
+---
+
+```{r}
+clean <- read.csv("~/Desktop/clean.csv", stringsAsFactors=FALSE)
+
+category = head(sort(table(clean$CUISINE.DESCRIPTION),decreasing = T),11)
+name_cuisine = names(category)
+top_11 = subset(clean,clean$CUISINE.DESCRIPTION %in% name_cuisine)
+data = subset(top_11,top_11$GRADE != "")
+data = subset(data,data$GRADE != "G")
+data = subset(data,data$GRADE != "N")
+data = subset(data,data$GRADE != "Z")
+#sort(table(data$CUISINE.DESCRIPTION),decreasing = T)
+data = subset(data,data$BORO != "0")
+save(data, file="~/Desktop/fall2019-proj2--sec2-grp1/output/data.RData")
+```
+
