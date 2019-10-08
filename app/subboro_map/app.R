@@ -5,7 +5,7 @@ library(leaflet)
 library(shiny)
 load("~/Desktop/fall2019-proj2--sec2-grp1/output/uniquedata.RData")
 data = uniquedata[,c("DBA","BORO","ZIPCODE","CUISINE.DESCRIPTION","SCORE","Longitude","Latitude")]
-cusine = c("American","Chinese" ,"Café/Coffee/Tea","Pizza","Latin (Cuban, Dominican, Puerto Rican, South & Central American)","Mexican" ,"Italian","Caribbean","Japanese","Bakery","Spanish" )  
+cusine = c("American","Chinese" ,"Café","Pizza","Latin","Mexican" ,"Italian","Caribbean","Japanese","Bakery","Spanish" )  
 boro = c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
 
 
@@ -47,7 +47,7 @@ server <- function(input,output){
             addTiles()%>%
             addCircleMarkers(lng = ~Longitude,
                              lat = ~Latitude,
-                             popup = ~DBA,
+                             popup = ~paste0(DBA,"<br/>",round(d4()$avg,2)),
                              #color = ~reactive({pal()(avg)}),
                              color = ~pal()(avg),
                              radius =4,stroke = TRUE,fillOpacity = 0.1,weight =5)%>%
