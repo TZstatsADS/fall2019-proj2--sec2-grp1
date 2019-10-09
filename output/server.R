@@ -152,7 +152,7 @@ server <- shinyServer(
     
     output$plot_nyc <- renderImage({
       
-      filename <- normalizePath(file.path('C:/nyc.jpg'))
+      filename <- normalizePath(file.path('nyc.jpg'))
       
       
       list(src = filename, width = 1600, height = 875)
@@ -228,7 +228,7 @@ server <- shinyServer(
     })
     
     
-    load("C:/uniquedata.RData")
+    load("uniquedata.RData")
     data = uniquedata[,c("DBA","BORO","ZIPCODE","CUISINE.DESCRIPTION","SCORE","Longitude","Latitude")]
     cusine = c("American","Chinese" ,"Café","Pizza","Latin","Mexican" ,"Italian","Caribbean","Japanese","Bakery","Spanish" )  
     boro = c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
