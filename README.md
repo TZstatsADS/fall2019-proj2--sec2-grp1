@@ -47,7 +47,7 @@ Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by
 
 ```
 proj/
-├── app/
+a..a..a.. app/
 ├── lib/
 ├── data/
 ├── doc/
