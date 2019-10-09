@@ -33,10 +33,10 @@ Term: Fall 2019
 
 The data set we used in this project is the 'New York City Restaurant Inspection Results' provided by Department of Health and Mental Hygiene, and it can be found on the NYC Open Data website. There are about 250 thousand records of restaurant inspections up to September 28 in 2019 in our data set after data cleaning, and each record includes details of the name, location, inspection date, violation code, letter grade and numerical score of that specific restaurant.
 
-![Tab1](C:/Users/huhan/OneDrive/Desktop/Tab1.png)
-![Tab2](C:/Users/huhan/OneDrive/Desktop/Tab2.png)
-![Tab3](C:/Users/huhan/OneDrive/Desktop/Tab3.png)
-![Tab4](C:/Users/huhan/OneDrive/Desktop/Tab4.png)
+![Tab1](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab1.png)
+![Tab2](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab2.png)
+![Tab3](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab3.png)
+![Tab4](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab4.png)
 
 + **App Link** [Link](https://proj2.shinyapps.io/Nycrestaurant_inspection/)
 
