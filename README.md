@@ -2,7 +2,6 @@
 
 ### [Project Description](doc/project2_desc.md)
 
-![screenshot](doc/screenshot2.png)
 
 In this second project of GR5243 Applied Data Science, we develop a version 2.0 of an *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [NYC Open Data](https://opendata.cityofnewyork.us/) or U.S. government open data released on the [data.gov](https://data.gov/) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
 
@@ -33,7 +32,13 @@ Term: Fall 2019
 
 The data set we used in this project is the 'New York City Restaurant Inspection Results' provided by Department of Health and Mental Hygiene, and it can be found on the NYC Open Data website. There are about 250 thousand records of restaurant inspections up to September 28 in 2019 in our data set after data cleaning, and each record includes details of the name, location, inspection date, violation code, letter grade and numerical score of that specific restaurant.
 
-![Tab1]('C:/Users/huhan/OneDrive/Desktop/1.png')
+![Tab1](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab1.png)
+![Tab2](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab2.png)
+![Tab3](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab3.png)
+![Tab4](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab4.png)
+
++ **App Link** [Link](https://proj2.shinyapps.io/Nycrestaurant_inspection/)
+
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
@@ -41,11 +46,11 @@ Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by
 
 ```
 proj/
-├── app/
-├── lib/
-├── data/
-├── doc/
-└── output/
+_________ app/
+_________ lib/
+_________ data/
+_________ doc/
+_________ output/
 ```
 
 Please see each subfolder for a README file.
