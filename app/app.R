@@ -1,5 +1,5 @@
-setwd("~/Desktop/fall2019-proj2--sec2-grp1/output")
-load("data.RData")
+#setwd("~/Desktop/fall2019-proj2--sec2-grp1/output")
+#load("data.RData")
 load("uniquedata.RData")
 #clean <- read.csv("clean.csv")
 #install.packages("leaflet.extras")
@@ -16,7 +16,6 @@ library(tigris)
 library(RJSONIO)
 library(RCurl)
 library(tidyverse)
-library(ggmap)
 library(maptools)
 
 borough_list<-c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
@@ -219,7 +218,7 @@ server <- shinyServer(
     cuisine_list1<-c("Pizza","Italian","Bakery","Caribbean","Japanese","American","Chinese","Café","Spanish","Latin","Mexican")
     
     output$plots4 <- renderPlot({  
-      data12<-data[which((data$BORO==input$borough1)&(data$CUISINE.DESCRIPTION==input$cuisine1)),]
+      data12<-uniquedata[which((uniquedata$BORO==input$borough1)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine1)),]
       ggplot(data=data12,aes(x=SCORE)) +
         geom_histogram(aes(y=..density..),fill="deepskyblue") +
         geom_density(col="black")+
@@ -228,10 +227,10 @@ server <- shinyServer(
         ggtitle("Distribution of scores in selected borough and cuisine type")
     })
     output$Summary1<-renderPrint({
-      summary(data[which((data$BORO==input$borough1)&(data$CUISINE.DESCRIPTION==input$cuisine1)),]$SCORE)
+      summary(uniquedata[which((uniquedata$BORO==input$borough1)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine1)),]$SCORE)
     })
     output$plots5 <- renderPlot({  
-      data22<-data[which((data$BORO==input$borough2)&(data$CUISINE.DESCRIPTION==input$cuisine2)),]
+      data22<-uniquedata[which((uniquedata$BORO==input$borough2)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine2)),]
       ggplot(data=data22,aes(x=SCORE)) +
         geom_histogram(aes(y=..density..),fill="lightgoldenrod1") +
         geom_density(col="black")+
@@ -240,10 +239,10 @@ server <- shinyServer(
         ggtitle("Distribution of scores in selected borough and cuisine type")
     })
     output$Summary2<-renderPrint({
-      summary(data[which((data$BORO==input$borough2)&(data$CUISINE.DESCRIPTION==input$cuisine2)),]$SCORE)
+      summary(uniquedata[which((uniquedata$BORO==input$borough2)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine2)),]$SCORE)
     })
     output$plots1 <- renderPlot({
-      count<-c(unname(table(data$BORO)))
+      count<-c(unname(table(uniquedata$BORO)))
       data1<-data.frame(borough_list,count)
       ggplot(data=data1,aes(x=borough_list,y=count,fill=factor(ifelse(borough_list==input$borough,"Selected","Others")))) +
         geom_bar(stat="identity") +
@@ -253,7 +252,7 @@ server <- shinyServer(
         ggtitle("Restaurants numbers in each borough")
     })
     output$plots2 <- renderPlot({  
-      count1<-c(unname(table(data$CUISINE.DESCRIPTION)))
+      count1<-c(unname(table(uniquedata$CUISINE.DESCRIPTION)))
       data2<-data.frame(cuisine_list1,count1)
       ggplot(data=data2,aes(x=cuisine_list1,y=count1,                       fill=factor(ifelse(cuisine_list1==input$cuisine,"Selected","Others")))) +
         geom_bar(stat="identity") +
@@ -263,7 +262,7 @@ server <- shinyServer(
         ggtitle("Restaurants numbers of each cuisine type")
     })
     output$plots3 <- renderPlot({  
-      data11<-data[which((data$BORO==input$borough)&(data$CUISINE.DESCRIPTION==input$cuisine)),]
+      data11<-uniquedata[which((uniquedata$BORO==input$borough)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine)),]
       ggplot(data=data11,aes(x=SCORE)) +
         geom_histogram(aes(y=..density..),fill="darkolivegreen3") +
         geom_density(col="black")+
@@ -272,9 +271,11 @@ server <- shinyServer(
         ggtitle("Distribution of scores in selected borough and cuisine type")
     })
     output$view <- renderTable({
-      topdata<-data[which((data$BORO==input$borough)&(data$CUISINE.DESCRIPTION==input$cuisine)),]
-      sortdata<-topdata[order(topdata$SCORE,topdata$GRADE),c(1,3,4,5,6)]
+      topdata<-uniquedata[which((uniquedata$BORO==input$borough)&(uniquedata$CUISINE.DESCRIPTION==input$cuisine)),]
+      topdata$INSPECTION.DATE<-as.Date(topdata$INSPECTION.DATE,"%m/%d/%Y")
+      sortdata<-topdata[order(topdata$INSPECTION.DATE, decreasing = TRUE),c(1,3,4,5,6,8,11)]
       sortdata<-sortdata[!duplicated(sortdata[1:4]),]
+      sortdata<-sortdata[order(sortdata$SCORE),-c(6,7)]
       head(sortdata, n = input$top)
     })
     
