@@ -47,11 +47,11 @@ Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by
 
 ```
 proj/
-a..a..a.. app/
-├── lib/
-├── data/
-├── doc/
-└── output/
+_________ app/
+_________ lib/
+_________ data/
+_________ doc/
+_________ output/
 ```
 
 Please see each subfolder for a README file.
