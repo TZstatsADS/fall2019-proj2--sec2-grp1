@@ -82,7 +82,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                             tableOutput("view")))),
                                
                                tabPanel("Zipcode Map Visualization",
-                                        div(class="outer",includeCSS("C:/style_1.css"),
+                                        div(class="outer",includeCSS("style_1.css"),
                                             
                                             tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                             
@@ -105,7 +105,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                
                                
                                tabPanel("Borough Map Visualization",
-                                        div(class="outer",includeCSS("C:/style_1.css"),
+                                        div(class="outer",includeCSS("style_1.css"),
                                             
                                             tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                             
@@ -125,7 +125,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                         )),
                                
                                
-                               tabPanel("Contact", div(class="outer",includeCSS("C:/style_1.css"),
+                               tabPanel("Contact", div(class="outer",includeCSS("style_1.css"),
                                                        
                                                        tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                                        
