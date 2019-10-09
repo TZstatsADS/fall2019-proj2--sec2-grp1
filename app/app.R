@@ -1,4 +1,4 @@
-setwd("../output")
+setwd("~/Desktop/fall2019-proj2--sec2-grp1/output")
 load("data.RData")
 load("uniquedata.RData")
 #clean <- read.csv("clean.csv")
@@ -19,6 +19,11 @@ library(tidyverse)
 library(ggmap)
 library(maptools)
 
+borough_list<-c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
+cuisine_list<-c("Pizza","Italian","Bakery","Caribbean","Japanese","American","Chinese","Café","Spanish","Latin","Mexican")
+cuisine_list1<-c("Pizza","Italian","Bakery","Caribbean","Japanese","American","Chinese","Café","Spanish","Latin","Mexican")
+cusine = c("American","Chinese" ,"Café","Pizza","Latin","Mexican" ,"Italian","Caribbean","Japanese","Bakery","Spanish" )  
+boro = c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
 
 ui <- bootstrapPage(theme = shinytheme("cyborg"),
                     navbarPage(title="New York City Restaurants",
