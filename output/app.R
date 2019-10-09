@@ -1,6 +1,6 @@
 setwd("../output")
-load("C:/data.RData")
-load("C:/uniquedata.RData")
+load("data.RData")
+load("uniquedata.RData")
 #clean <- read.csv("clean.csv")
 #install.packages("leaflet.extras")
 #install.packages("shinythemes")
@@ -85,7 +85,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                             tableOutput("view")))),
                                
                                tabPanel("Zipcode Map Visualization",
-                                        div(class="outer",includeCSS("C:/style_1.css"),
+                                        div(class="outer",includeCSS("style_1.css"),
                                             
                                             tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                             
@@ -108,7 +108,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                
                                
                                tabPanel("Borough Map Visualization",
-                                        div(class="outer",includeCSS("C:/style_1.css"),
+                                        div(class="outer",includeCSS("style_1.css"),
                                             
                                             tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                             
@@ -128,7 +128,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                         )),
                                
                                
-                               tabPanel("Contact", div(class="outer",includeCSS("C:/style_1.css"),
+                               tabPanel("Contact", div(class="outer",includeCSS("style_1.css"),
                                                        
                                                        tags$style(type = "text/css", ".outer {position: fixed; top: 50px; left: 0; right: 0; bottom: 0; overflow: hidden; padding: 0}"),
                                                        
@@ -277,7 +277,7 @@ server <- shinyServer(
     
     output$plot_nyc <- renderImage({
       
-      filename <- normalizePath(file.path('C:/nyc.jpg'))
+      filename <- normalizePath(file.path('nyc.jpg'))
       
       
       list(src = filename, width = 1600, height = 875)
@@ -353,7 +353,7 @@ server <- shinyServer(
     })
     
 
-    load("C:/uniquedata.RData")
+    load("uniquedata.RData")
     data = uniquedata[,c("DBA","BORO","ZIPCODE","CUISINE.DESCRIPTION","SCORE","Longitude","Latitude")]
     cusine = c("American","Chinese" ,"Café","Pizza","Latin","Mexican" ,"Italian","Caribbean","Japanese","Bakery","Spanish" )  
     boro = c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
