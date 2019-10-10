@@ -43,13 +43,13 @@ The data set we used in this project is the 'New York City Restaurant Inspection
 
 + **Contribution statement**: 
 
-Data acquisition: Nuanjun Zhao, Qiwen Gao, Siyu Yang, Hang Hu
+Data acquisition: Nuanjun Zhao, Qiwen Gao, Siyu Yang, Hang Hu, Xudong Guo
 
 Data manipulation: Nuanjun Zhao, Qiwen Gao, Siyu Yang, Hang Hu
 
 Data integration: Nuanjun Zhao
 
-Tab1-Zipcode map visualization:
+Tab1-Zipcode map visualization: Xudong Guo
 
 Tab2-Borough map visualization:Siyu Yang
 
@@ -57,9 +57,9 @@ Tab3-Score comparison: Nuanjun Zhao, Hang Hu
 
 Tab4-Restaurant recommendation: Nuanjun Zhao,Hang Hu
 
-Tab5-Contact:
+Tab5-Contact: Xudong Guo
 
-Code integration: Nuanjun Zhao, Siyu Yang, Hang Hu
+Code integration: Nuanjun Zhao, Siyu Yang, Hang Hu, Xudong Guo
 
 Presentation:Qiwen Gao
 
