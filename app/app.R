@@ -417,7 +417,7 @@ server <- shinyServer(
         addCircleMarkers(lng = ~Longitude,
                          lat = ~Latitude,
                          popup = ~paste0('<strong>',"Restaurant:",'</strong>',DBA,"<br/>",'<strong>',"Score:",'</strong>',round(d()$SCORE,2))
-                         %>% lapply(htmltools::HTML),,
+                         %>% lapply(htmltools::HTML),
                          #color = ~reactive({pal()(avg)}),
                          color = ~pal()(SCORE),
                          radius =4,stroke = TRUE,fillOpacity = 0.1,weight =5)%>%
