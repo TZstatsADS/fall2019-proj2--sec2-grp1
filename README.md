@@ -50,7 +50,7 @@ Data manipulation: Nuanjun Zhao, Qiwen Gao, Siyu Yang
 
 Data integration: Nuanjun Zhao
 
-Tab1-Zipcode map visualization:
+Tab1-Zipcode map visualization:Xudong Guo
 
 Tab2-Borough map visualization:Siyu Yang
 
@@ -58,9 +58,9 @@ Tab3-Score comparison: Nuanjun Zhao
 
 Tab4-Restaurant recommendation: Nuanjun Zhao
 
-Tab5-Contact:
+Tab5-Contact:Xudong Guo
 
-Code integration: Nuanjun Zhao, Siyu Yang
+Code integration: Nuanjun Zhao, Siyu Yang, Xudong Guo
 
 Presentation:Qiwen Gao  
 
