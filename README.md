@@ -28,7 +28,8 @@ Term: Fall 2019
                   
 
 
-+ **Project summary**: In this Shiny App Project, our group developed a shiny app about the restaurant inspection in New York city. Nowadays, when people look for somewhere to hang out or have a dinner, the most frequently used APP is yelp, in which people can refer to ratings, locations and comments from others. However, the ratings and comments of the restaurants that people could see on yelp are mostly based on flavor of food, quality of service and environment of the restaurant. But what about the food quality? Is the water potable? Is the kitchen appropriately cleaned? In fact these are also important elements for customers to decide whether they should go to the restaurant or not. Inspired by such kind of user demand and the yelp app, our group developed the nyc restaurant inspection shiny app, which show the inspection results of the nyc restaurants on map, compare the scores of different restaurants and make recommendations. I am happy to introduce our shiny app further.
++ **Project summary**: In this Shiny App Project, our group developed a shiny app about the restaurant inspection in New York city. Nowadays, when people look for somewhere to hang out or have a dinner, the most frequently used APP is yelp, in which people can refer to ratings, locations and comments from others. However, the ratings and comments of the restaurants that people could see on yelp are mostly based on flavor of food, quality of service and environment of the restaurant. But what about the food quality? Is the water potable? Is the kitchen appropriately cleaned? In fact these are also important elements for customers to decide whether they should go to the restaurant or not. Inspired by such kind of user demand and the yelp app, our group developed the nyc restaurant inspection shiny app, which shows the inspection results of the nyc restaurants on map, compares the scores of different restaurants and makes recommendations. There are 5 tabs in the shiny app, which includes
+Zipcode Map Visualization, Borough Map Visualization,Score Distribution,Top recommended restaurants and Contatc us. Please see the screenshots for each below. 
 
 The data set we used in this project is the 'New York City Restaurant Inspection Results' provided by Department of Health and Mental Hygiene, and it can be found on the NYC Open Data website. There are about 250 thousand records of restaurant inspections up to September 28 in 2019 in our data set after data cleaning, and each record includes details of the name, location, inspection date, violation code, letter grade and numerical score of that specific restaurant.
 
@@ -43,9 +44,9 @@ The data set we used in this project is the 'New York City Restaurant Inspection
 
 + **Contribution statement**: 
 
-Data acquisition: Nuanjun Zhao
+Data acquisition: Nuanjun Zhao， Qiwen Gao, 
 
-Data manipulation: Nuanjun Zhao
+Data manipulation: Nuanjun Zhao, Qiwen Gao,
 
 Data integration: Nuanjun Zhao
 
@@ -61,9 +62,9 @@ Tab5-Contact:
 
 Code integration: Nuanjun Zhao
 
-Presentation:  
+Presentation:Qiwen Gao  
 
-Github arrangement: Nuanjun Zhao
+Github arrangement: Nuanjun Zhao, Qiwen Gao
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
