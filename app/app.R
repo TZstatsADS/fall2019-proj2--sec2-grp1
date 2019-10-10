@@ -308,7 +308,7 @@ server <- shinyServer(
     }, deleteFile = FALSE)
   
     
-    icon_redefined <- pulseIcons(color = 'gold', heartbeat = 0.6, iconSize = 10)
+    icon_redefined <- pulseIcons(color = 'pink', heartbeat = 0.6, iconSize = 10)
     
     
     nycounties <- geojsonio::geojson_read("Borough_Boundaries.geojson",
@@ -407,21 +407,21 @@ server <- shinyServer(
     
     d4 = reactive({left_join(d3(),d())})
     #c = reactive({d4()$avg})
-    pal = reactive(colorNumeric(palette = "Blues",domain = d4()$avg))
+    pal = reactive(colorQuantile(palette = "Blues",domain = d()$SCORE))
     #pal = colorNumeric( palette = "Blues",domain = c(9:17))
     output$map <- renderLeaflet({
       
-      leaflet(d4())%>%
+      leaflet(d())%>%
         addTiles()%>%
         addProviderTiles(providers$CartoDB.Positron) %>%
         addCircleMarkers(lng = ~Longitude,
                          lat = ~Latitude,
-                         popup = ~paste0('<strong>',"Restaurant:",'</strong>',DBA,"<br/>",'<strong>',"Score:",'</strong>',round(d4()$avg,2))
+                         popup = ~paste0('<strong>',"Restaurant:",'</strong>',DBA,"<br/>",'<strong>',"Score:",'</strong>',round(d()$SCORE,2))
                          %>% lapply(htmltools::HTML),,
                          #color = ~reactive({pal()(avg)}),
-                         color = ~pal()(avg),
+                         color = ~pal()(SCORE),
                          radius =4,stroke = TRUE,fillOpacity = 0.1,weight =5)%>%
-        addLegend("bottomright",title = "average scores",pal = pal(),values = ~avg,opacity = 0.7)})
+        addLegend("bottomright",title = "average scores",pal = pal(),values = ~SCORE,opacity = 0.7)})
     
   }
 )
