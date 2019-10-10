@@ -32,16 +32,16 @@ Term: Fall 2019
 
 The data set we used in this project is the 'New York City Restaurant Inspection Results' provided by Department of Health and Mental Hygiene, and it can be found on the NYC Open Data website. There are about 250 thousand records of restaurant inspections up to September 28 in 2019 in our data set after data cleaning, and each record includes details of the name, location, inspection date, violation code, letter grade and numerical score of that specific restaurant.
 
-![Tab1](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab1.png)
-![Tab2](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab2.png)
-![Tab3](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab3.png)
-![Tab4](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab4.png)
+![Tab1](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/lib/Tab3.png)
+![Tab2](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/lib/Tab4.png)
+![Tab3](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/lib/Tab1.png)
+![Tab4](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab2.png)
 ![Tab5](https://github.com/TZstatsADS/fall2019-proj2--sec2-grp1/blob/master/figs/Tab5.png)
 
 + **App Link** [Link](https://proj2.shinyapps.io/Nycrestaurant_inspection/)
 
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
++ **Contribution statement**: All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
