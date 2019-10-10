@@ -43,15 +43,25 @@ The data set we used in this project is the 'New York City Restaurant Inspection
 
 + **Contribution statement**: 
 Data acquisition: Nuanjun Zhao
+
 Data manipulation: Nuanjun Zhao
+
 Data integration: Nuanjun Zhao
+
 Tab1-Zipcode map visualization:
+
 Tab2-Borough map visualization:
+
 Tab3-Score comparison: Nuanjun Zhao
+
 Tab4-Restaurant recommendation: Nuanjun Zhao
+
 Tab5-Contact:
+
 Code integration: Nuanjun Zhao
+
 Presentation:  
+
 Github arrangement: Nuanjun Zhao
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
