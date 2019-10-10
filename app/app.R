@@ -393,7 +393,8 @@ server <- shinyServer(
         addProviderTiles(providers$CartoDB.Positron) %>%
         addCircleMarkers(lng = ~Longitude,
                          lat = ~Latitude,
-                         popup = ~paste0(DBA,"<br/>",round(d4()$avg,2)),
+                         popup = ~paste0('<strong>',"Restaurant:",'</strong>',DBA,"<br/>",'<strong>',"Score:",'</strong>',round(d4()$avg,2))
+                         %>% lapply(htmltools::HTML),
                          #color = ~reactive({pal()(avg)}),
                          color = ~pal()(avg),
                          radius =4,stroke = TRUE,fillOpacity = 0.1,weight =5)%>%
