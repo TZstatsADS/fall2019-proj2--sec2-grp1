@@ -34,7 +34,7 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                             tags$head(tags$style(HTML('#controls {background-color: rgba(0,0,0,0.45);}'))),
                                             
                                             leafletOutput("heat_map", width = "100%", height = "100%"),
-                                            absolutePanel(top = 10, left = 10,
+                                            absolutePanel(top = 80, left = 10,
                                                           
                                                           
                                                           checkboxGroupInput("restaurant_choice", "Restaurant Choice:",
@@ -44,8 +44,16 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                                                                "Pizza" = '4',
                                                                                "Bakery" = '5'
                                                                              )),
-                                                          checkboxInput("legend", "Show legend", TRUE), draggable = TRUE
-                                            )
+                                                          draggable = TRUE
+                                            ),
+                                            absolutePanel(top = 10, right = 10,
+                                                          
+                                                          
+                                                          checkboxGroupInput("avoid_choice", "Type of Violation:",
+                                                                             c("Rat" = '6',
+                                                                               "Noxious Gas" = '7'
+                                                                               )),
+                                                          draggable = TRUE)
                                         )),
                                
                                
@@ -200,19 +208,28 @@ server <- shinyServer(
     #palette of average_borough score layer
     pal_20 <- colorNumeric(palette = "Blues", domain = uniquedata_merge_2$AVG_BORO)
     
-    
     uniquedata <- uniquedata[na.omit(uniquedata$Latitude) & na.omit(uniquedata$Longitude),]
     Chinese_A <- uniquedata[uniquedata$CUISINE.DESCRIPTION == "Chinese" & uniquedata$GRADE == "A" & uniquedata$SCORE < 3 & uniquedata$SCORE > 0,]
     Japanese_A <- uniquedata[uniquedata$CUISINE.DESCRIPTION == "Japanese" & uniquedata$GRADE == "A" & uniquedata$SCORE < 3 & uniquedata$SCORE > 0,]
     Mexican_A <- uniquedata[uniquedata$CUISINE.DESCRIPTION == "Mexican" & uniquedata$GRADE == "A" & uniquedata$SCORE < 3 & uniquedata$SCORE > 0,]
     Pizza_A <- uniquedata[uniquedata$CUISINE.DESCRIPTION == "Pizza" & uniquedata$GRADE == "A" & uniquedata$SCORE < 3 & uniquedata$SCORE > 0,]
     Bakery_A <- uniquedata[uniquedata$CUISINE.DESCRIPTION == "Bakery" & uniquedata$GRADE == "A" & uniquedata$SCORE < 3 & uniquedata$SCORE > 0,]
+    uniquedata_bad <- uniquedata[uniquedata$GRADE == 'C' & uniquedata$SCORE > 30 & uniquedata$VIOLATION.CODE == "04L",]
+    uniquedata_bad_2 <- uniquedata[uniquedata$VIOLATION.CODE == "05B",]
+    
+    #icon definition
+    rat_icon <- makeIcon(iconUrl = "rat.png",
+                         iconWidth = 18, iconHeight = 18)
+    noxious_icon <- makeIcon(iconUrl = "noxious.png",
+                         iconWidth = 18, iconHeight = 18)
     
     Chinese_A$on <- 1
     Japanese_A$on <- 1
     Mexican_A$on <- 1
     Pizza_A$on <- 1
     Bakery_A$on <- 1
+    uniquedata_bad$on <- 1
+    uniquedata_bad_2$on <- 1
     
     borough_list<-c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
     cuisine_list<-c("Pizza","Italian","Bakery","Caribbean","Japanese","American","Chinese","Café/Coffee/Tea","Spanish","Latin (Cuban, Dominican, Puerto Rican, South & Central American)","Mexican")
@@ -348,10 +365,14 @@ server <- shinyServer(
         addPulseMarkers(lng = ~Bakery_A[Bakery_A$on == ifelse((5 %in% input$restaurant_choice),1,0),]$Longitude,
                    lat = ~Bakery_A[Bakery_A$on == ifelse((5 %in% input$restaurant_choice),1,0),]$Latitude,
                    icon = icon_redefined, label = ~Bakery_A$DBA)%>%
+      
+        addMarkers(lng = ~uniquedata_bad[uniquedata_bad$on == ifelse((6 %in% input$avoid_choice), 1, 0),]$Longitude,
+                   lat = ~uniquedata_bad[uniquedata_bad$on == ifelse((6 %in% input$avoid_choice), 1, 0),]$Latitude,
+                   icon = rat_icon, label = paste(uniquedata_bad$BUILDING, uniquedata_bad$STREET, sep = " ")) %>%
         
-        
-        
-        
+        addMarkers(lng = ~uniquedata_bad_2[uniquedata_bad_2$on == ifelse((7 %in% input$avoid_choice), 1, 0),]$Longitude,
+                   lat = ~uniquedata_bad_2[uniquedata_bad_2$on == ifelse((7 %in% input$avoid_choice), 1, 0),]$Latitude,
+                   icon = noxious_icon, label = paste(uniquedata_bad_2$BUILDING, uniquedata_bad_2$STREET, sep = " ")) %>%
   
         setView(lng = -74.0103095, lat = 40.71446219, zoom = 11) %>%
         addLegend("bottomleft", pal = pal_10, values = na.omit(uniquedata_merge$AVG_ZIP), title = "AVG Score by Zip.") %>%
