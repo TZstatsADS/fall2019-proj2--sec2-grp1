@@ -42,6 +42,7 @@ The data set we used in this project is the 'New York City Restaurant Inspection
 
 
 + **Contribution statement**: 
+
 Data acquisition: Nuanjun Zhao
 
 Data manipulation: Nuanjun Zhao
