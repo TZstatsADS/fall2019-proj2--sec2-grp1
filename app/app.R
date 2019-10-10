@@ -26,68 +26,6 @@ boro = c("Brooklyn","Manhattan","Queens","Bronx","Staten Island")
 
 ui <- bootstrapPage(theme = shinytheme("cyborg"),
                     navbarPage(title="New York City Restaurants",
-                               
-                               tabPanel("Score Comparison", titlePanel("Score Distribution"),
-                                        # Sidebar layout with input and output definitions ----
-                                        sidebarLayout(
-                                          # Sidebar panel for inputs ----
-                                          sidebarPanel(
-                                            selectInput('borough1', 'region', 
-                                                        borough_list, selected='Brooklyn'),
-                                            selectInput('cuisine1', 'cuisine type', 
-                                                        cuisine_list1, selected='Pizza')),
-                                          # Main panel for displaying outputs ----
-                                          mainPanel(
-                                            plotOutput(outputId = "plots4", height = "300"),
-                                            h4("Summary"),
-                                            verbatimTextOutput("Summary1"))),
-                                        hr(),
-                                        sidebarLayout(
-                                          # Sidebar panel for inputs ----
-                                          sidebarPanel(
-                                            selectInput('borough2', 'region', 
-                                                        borough_list, selected='Brooklyn'),
-                                            selectInput('cuisine2', 'cuisine type', 
-                                                        cuisine_list1, selected='Pizza')),
-                                          # Main panel for displaying outputs ----
-                                          mainPanel(
-                                            plotOutput(outputId = "plots5", height = "300"),
-                                            h4("Summary"),
-                                            verbatimTextOutput("Summary2")
-                                          ))
-                               ),
-                               
-                               tabPanel("Restaurant recommendation",
-                                        titlePanel("Top 5 Recommended Restaurants"),
-                                        # Sidebar layout with input and output definitions ----
-                                        sidebarLayout(
-                                          # Sidebar panel for inputs ----
-                                          sidebarPanel(
-                                            selectInput('borough', 'region', 
-                                                        borough_list, selected='Brooklyn')),
-                                          # Main panel for displaying outputs ----
-                                          mainPanel(
-                                            plotOutput(outputId = "plots1", height = "300"))),
-                                        hr(),
-                                        sidebarLayout(
-                                          # Sidebar panel for inputs ----
-                                          sidebarPanel(
-                                            selectInput('cuisine', 'cuisine type', 
-                                                        cuisine_list1, selected='Pizza')),
-                                          # Main panel for displaying outputs ----
-                                          mainPanel(
-                                            plotOutput(outputId = "plots2", height = "300"),
-                                            plotOutput(outputId = "plots3", height = "300"))),
-                                        hr(),
-                                        sidebarLayout(
-                                          # Sidebar panel for inputs ----
-                                          sidebarPanel(
-                                            numericInput("top", "Top restaurants to view:", 5)),
-                                          # Main panel for displaying outputs ----
-                                          mainPanel(
-                                            h4("Top restaurants"),
-                                            tableOutput("view")))),
-                               
                                tabPanel("Zipcode Map Visualization",
                                         div(class="outer",includeCSS("style_1.css"),
                                             
@@ -130,6 +68,69 @@ ui <- bootstrapPage(theme = shinytheme("cyborg"),
                                                           ), draggable = TRUE
                                             )
                                         )),
+                               
+                               
+                               tabPanel("Score Comparison", titlePanel("Score Distribution"),
+                                        # Sidebar layout with input and output definitions ----
+                                        sidebarLayout(
+                                          # Sidebar panel for inputs ----
+                                          sidebarPanel(
+                                            selectInput('borough1', 'region', 
+                                                        borough_list, selected='Brooklyn'),
+                                            selectInput('cuisine1', 'cuisine type', 
+                                                        cuisine_list1, selected='Pizza')),
+                                          # Main panel for displaying outputs ----
+                                          mainPanel(
+                                            plotOutput(outputId = "plots4", height = "300"),
+                                            h6("Notes: lower score indicates better inspection results"),
+                                            verbatimTextOutput("Summary1"))),
+                                        hr(),
+                                        sidebarLayout(
+                                          # Sidebar panel for inputs ----
+                                          sidebarPanel(
+                                            selectInput('borough2', 'region', 
+                                                        borough_list, selected='Brooklyn'),
+                                            selectInput('cuisine2', 'cuisine type', 
+                                                        cuisine_list1, selected='Pizza')),
+                                          # Main panel for displaying outputs ----
+                                          mainPanel(
+                                            plotOutput(outputId = "plots5", height = "300"),
+                                            h6("Notes: lower score indicates better inspection results"),
+                                            verbatimTextOutput("Summary2")
+                                          ))
+                               ),
+                               
+                               tabPanel("Restaurant recommendation",
+                                        titlePanel("Top Recommended Restaurants"),
+                                        # Sidebar layout with input and output definitions ----
+                                        sidebarLayout(
+                                          # Sidebar panel for inputs ----
+                                          sidebarPanel(
+                                            selectInput('borough', 'region', 
+                                                        borough_list, selected='Brooklyn')),
+                                          # Main panel for displaying outputs ----
+                                          mainPanel(
+                                            plotOutput(outputId = "plots1", height = "300"))),
+                                        hr(),
+                                        sidebarLayout(
+                                          # Sidebar panel for inputs ----
+                                          sidebarPanel(
+                                            selectInput('cuisine', 'cuisine type', 
+                                                        cuisine_list1, selected='Pizza')),
+                                          # Main panel for displaying outputs ----
+                                          mainPanel(
+                                            plotOutput(outputId = "plots2", height = "300"),
+                                            h6("notes: lower score indicates better inspection results"),
+                                            plotOutput(outputId = "plots3", height = "300"))),
+                                        hr(),
+                                        sidebarLayout(
+                                          # Sidebar panel for inputs ----
+                                          sidebarPanel(
+                                            numericInput("top", "Top restaurants to view:", 5)),
+                                          # Main panel for displaying outputs ----
+                                          mainPanel(
+                                            h4("Top restaurants"),
+                                            tableOutput("view")))),
                                
                                
                                tabPanel("Contact", div(class="outer",includeCSS("style_1.css"),
@@ -288,6 +289,7 @@ server <- shinyServer(
       
       list(src = filename, width = 1600, height = 875)
     }, deleteFile = FALSE)
+  
     
     icon_redefined <- pulseIcons(color = 'gold', heartbeat = 0.6, iconSize = 10)
     
@@ -393,8 +395,7 @@ server <- shinyServer(
         addProviderTiles(providers$CartoDB.Positron) %>%
         addCircleMarkers(lng = ~Longitude,
                          lat = ~Latitude,
-                         popup = ~paste0('<strong>',"Restaurant:",'</strong>',DBA,"<br/>",'<strong>',"Score:",'</strong>',round(d4()$avg,2))
-                         %>% lapply(htmltools::HTML),
+                         popup = ~paste0(DBA,"<br/>",round(d4()$avg,2)),
                          #color = ~reactive({pal()(avg)}),
                          color = ~pal()(avg),
                          radius =4,stroke = TRUE,fillOpacity = 0.1,weight =5)%>%
